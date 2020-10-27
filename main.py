@@ -14,7 +14,7 @@ downloadpath =r'D:/up'
 aria2session= None
 #aria有密码  #aria2session= '1'   密码为空   aria2session= None
 #使用代理获取下载地址
-proxies = { "http": "socks5://127.0.0.1:10900",'https': 'socks5://127.0.0.1:10900'}
+#proxies = { "http": "socks5://127.0.0.1:10900",'https': 'socks5://127.0.0.1:10900'}
 
 #递归遍历目录
 def ListGoindex(url):
