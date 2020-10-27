@@ -13,8 +13,8 @@ downloadpath =r'D:/up'
 #aria2密码
 aria2session= None
 #aria有密码  #aria2session= '1'   密码为空   aria2session= None
-#使用代理获取下载地址
-#proxies = { "http": "socks5://127.0.0.1:10900",'https': 'socks5://127.0.0.1:10900'}
+#使用代理获取下载地址  proxies = { "http": "socks5://127.0.0.1:10900",'https': 'socks5://127.0.0.1:10900'}
+proxies = None
 
 #递归遍历目录
 def ListGoindex(url):
@@ -24,7 +24,8 @@ def ListGoindex(url):
     })
     headers = {'Content-Type': 'application/json','User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36'}
     #发送请求
-    res = requests.post(url=url,data=d,headers=headers,proxies=proxies)
+    #res = requests.post(url=url,data=d,headers=headers,proxies=proxies)
+    res = requests.post(url=url, data=d, headers=headers)
     #处理返回结果
     res=json.loads(res.text)["data"]["files"]
     #循环取出结果
