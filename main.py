@@ -1,7 +1,7 @@
 import json
 import requests
 from urllib.parse import urlparse
-from urllib.parse import unquote
+from urllib.parse import unquote,quote
 import aria2c
 
 #定义基本信息
@@ -9,12 +9,11 @@ import aria2c
 weburl = ""
 aria2host="127.0.0.1"
 aria2port="6800"
-downloadpath =r'D:/up'
+downloadpath =r'/root/downloads'
 #aria2密码
-aria2session= None
+aria2session= '1'
 #aria有密码  #aria2session= '1'   密码为空   aria2session= None
-#使用代理获取下载地址  proxies = { "http": "socks5://127.0.0.1:10900",'https': 'socks5://127.0.0.1:10900'}
-proxies = None
+
 
 #递归遍历目录
 def ListGoindex(url):
@@ -37,7 +36,8 @@ def ListGoindex(url):
             ListGoindex(tmp)
         else:
             #添加到下载器
-            FileDownload(url+item["name"])
+            # print(url+quote(item["name"],'utf-8'))
+            FileDownload(url+quote(item["name"],'utf-8'))
 
 def FileDownload(url):
     #使用的下载器
