@@ -1,7 +1,7 @@
 import json
 import requests
 from urllib.parse import urlparse
-from urllib.parse import unquote
+from urllib.parse import unquote,quote
 import aria2c
 
 #定义基本信息
@@ -37,7 +37,7 @@ def ListGoindex(url):
             ListGoindex(tmp)
         else:
             #添加到下载器
-            FileDownload(url+item["name"])
+            FileDownload(url+quote(item["name"],'utf-8'))
 
 def FileDownload(url):
     #使用的下载器
