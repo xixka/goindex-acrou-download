@@ -15,6 +15,15 @@ aria2session= '1'
 #aria有密码  #aria2session= '1'   密码为空   aria2session= None
 
 
+#判断字符串是否为合法json格式
+def is_json(myjson):
+    try:
+        json.loads(myjson)
+    except ValueError:
+        return False
+    return True
+
+
 #递归遍历目录
 def ListGoindex(url):
     #设置请求参数
@@ -23,8 +32,10 @@ def ListGoindex(url):
     })
     headers = {'Content-Type': 'application/json','User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36'}
     #发送请求
-    #res = requests.post(url=url,data=d,headers=headers,proxies=proxies)
     res = requests.post(url=url, data=d, headers=headers)
+    while not is_json(res.text):
+        print("网络波动重新请求")
+        res = requests.post(url=url, data=d, headers=headers)
     #处理返回结果
     res=json.loads(res.text)["data"]["files"]
     #循环取出结果
