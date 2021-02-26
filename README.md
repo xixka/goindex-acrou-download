@@ -1,5 +1,7 @@
 # goindex-acrou-download
-随缘维护
+
+# goindex-acrou 接口可能已经更改，项目可能已经过时
+# The interface of the new version of goindex-acrou may have been changed, and the project may be outdated
 
 ## 依赖
 

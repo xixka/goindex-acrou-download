@@ -58,10 +58,10 @@ def is_json(myjson):
 # 递归遍历目录
 def ListGoindex(url):
     # 设置请求参数
-    d = json.dumps({
+    d = {
         'page_index': 0
-    })
-    headers = {'Content-Type': 'application/json',
+    }
+    headers = {'Content-Type': 'multipart/form-data',
                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36'}
     res = None
     # 发送请求
